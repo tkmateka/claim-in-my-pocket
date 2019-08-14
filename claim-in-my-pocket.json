@@ -1,0 +1,11 @@
+{
+    "artId": "",
+    "appName": "claim-in-my-pocket",
+    "description": "ShipIT competition",
+    "lastModified": "2019-08-14T08:30:24.721Z",
+    "artURL": "http://localhost:3000/bhive-art/",
+    "imgSourcePath": "",
+    "version": "1.0.0",
+    "dataSource": "neutrinos-delivery-rt",
+    "createDate": "2019-08-14T08:30:24.721Z"
+}
