@@ -1,24 +1,23 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-  <div fxLayout="column wrap" class="maxHeight" fxFlex="95" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-    <div fxLayout="row wrap" class="toolBar" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
-      <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-        <h1 class="logoText">Clain In My Pocket</h1>
-      </div>
-      <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center end" fxShow="true" fxHide="false">
-        <p class="userDetails">Tukiso</p>
-        <p class="userDetails">Mateka</p>
+  <div fxLayout="column wrap" class="maxHeight" fxFlex="100" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+    <div fxLayout="row wrap" class="toolBar" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+      <div fxLayout="column wrap" fxFlex="50" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+        <h2 class="logoText">Clain In My Pocket</h2>
       </div>
     </div>
     <mat-tab-group class="homeTabGroup marginTop2" mat-stretch-tabs>
-      <mat-tab label="Tab 1">
-        <div fxLayout="column wrap" class="tabInnerContainer" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+      <mat-tab label="Balance">
+        <div fxLayout="column wrap" class="tabInnerContainer" fxLayoutAlign="space-between center" fxShow="true" fxHide="false" *ngIf="showContent">
           <div fxLayout="row wrap" class="balance marginTop2" fxLayoutAlign="center center" fxShow="true" fxHide="false">
             <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
               <p>Current Balance</p>
-              <h1>R 1350</h1>
+              <h1 class="textAlign amount">R {{fundvalue[0][&apos;fundvalueavailible&apos;]}}.00</h1>
             </div>
           </div>
-          <div fxLayout="column wrap" class="width100" fxLayoutGap=".5em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" *ngIf="noTransact">
+            <h3>No transactions yet...</h3>
+          </div>
+          <div fxLayout="column wrap" class="width100 transactContainer" fxLayoutGap=".5em" fxLayoutAlign="center center" fxShow="true" fxHide="false" *ngIf="!noTransact">
             <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="center center" fxShow="true" fxHide="false">
               <p>Transaction 1</p>
             </div>
@@ -31,11 +30,110 @@
           </div>
         </div>
       </mat-tab>
-      <mat-tab label="Tab 2">
-        <h1>Tab 2 ready</h1>
+      <mat-tab label="Transaction">
+        <div fxLayout="column wrap" class="tabInnerContainer marginTopBottom2" fxLayoutGap="2em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <mat-card *ngFor="let trans of transactions" class="width80 transCards">
+            <mat-card-content>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                <div fxLayout="row wrap" class="width100" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                  <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Openning Balance" value="R {{trans.openingBalance}}.00" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start center" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Ref Number" value="{{trans.referenceNumber}}" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="center stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Transaction Date" value="{{trans.transactionDate | slice:0:10}}" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Transaction Time" value="{{trans.transactionTime}}" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Transaction Type" value="{{trans.transactionType}}" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Transaction Value" value="R {{trans.transactionValue}}.00" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Closing Balance" value="R {{trans.closingBalance}}.00" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" class="width100" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                  <div fxLayout="column wrap" class="width100" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <textarea matInput placeholder="Transaction Comment" value="{{trans.transactionComment}}" required [readonly]="true"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </mat-tab>
-      <mat-tab label="Tab 3">
-        <h3>Tab 3 ready</h3>
+      <mat-tab label="Configuration">
+        <div fxLayout="column wrap" class="tabInnerContainer marginTopBottom2" fxLayoutGap="2em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <mat-card *ngFor="let config of configurations" class="width80 transCards">
+            <mat-card-content>
+              <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Contribution Percentage" value="{{config.contributionPercentage}}%" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Contribution Type" value="{{config.contributionType}}" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Contribution Value" value="R {{config.contributionValue}}.00" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start center" fxShow="true" fxHide="false">
+                    <mat-form-field>
+                      <input matInput placeholder="Ref Number" value="{{config.referenceNumber}}" required readonly="true">
+
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </div>

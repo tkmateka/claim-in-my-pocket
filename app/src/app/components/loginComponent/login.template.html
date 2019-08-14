@@ -10,35 +10,35 @@
             <input matInput [(ngModel)]="register.name" name="name" placeholder="Name" required>
 
           </mat-form-field>
-          <p *ngIf="isError">Paragraph</p>
+          <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
             <input matInput [(ngModel)]="register.surname" name="surname" placeholder="Surname" required>
 
           </mat-form-field>
-          <p *ngIf="isError">Paragraph</p>
+          <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
             <input matInput [(ngModel)]="register.email" name="email" placeholder="Email" required>
 
           </mat-form-field>
-          <p *ngIf="isError">Paragraph</p>
+          <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
             <input matInput [(ngModel)]="register.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13">
 
           </mat-form-field>
-          <p *ngIf="isError">Paragraph</p>
+          <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
             <input matInput [(ngModel)]="register.password" name="password" placeholder="Password" required>
 
           </mat-form-field>
-          <p *ngIf="isError">Paragraph</p>
+          <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
         <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
           <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg()" [disabled]="registerForm.invalid">Register</button></div>
@@ -56,20 +56,20 @@
       <div fxLayout="column wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
-            <input matInput [(ngModel)]="login.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13">
+            <input matInput [(ngModel)]="login.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13" #idNum>
 
           </mat-form-field>
-          <p *ngIf="isError">Paragraph</p>
+          <p *ngIf="idError &amp;&amp; (loginForm.controls.idNumber.value.length &lt; 13)" class="errorMsg">Please enter a valid SA ID</p>
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
-            <input matInput [(ngModel)]="login.password" name="password" placeholder="Password" required>
+            <input matInput [(ngModel)]="login.password" name="password" placeholder="Password" required #pwd>
 
           </mat-form-field>
-          <p *ngIf="isError">Paragraph</p>
+          <p minLength="4" *ngIf="pswError" class="errorMsg">Password should be at least 4 characters long</p>
         </div>
         <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="log()" [disabled]="loginForm.invalid">Login</button></div>
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="log(idNum.value, pwd.value)" [disabled]="loginForm.invalid">Login</button></div>
           <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn">Cancel</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">

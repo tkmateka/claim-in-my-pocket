@@ -537,7 +537,7 @@
                                 },
                                 {
                                     "_key": "class",
-                                    "_value": "",
+                                    "_value": "errorMsg",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
@@ -734,7 +734,7 @@
                                 },
                                 {
                                     "_key": "class",
-                                    "_value": "",
+                                    "_value": "errorMsg",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
@@ -931,7 +931,7 @@
                                 },
                                 {
                                     "_key": "class",
-                                    "_value": "",
+                                    "_value": "errorMsg",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
@@ -1140,7 +1140,7 @@
                                 },
                                 {
                                     "_key": "class",
-                                    "_value": "",
+                                    "_value": "errorMsg",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
@@ -1337,7 +1337,7 @@
                                 },
                                 {
                                     "_key": "class",
-                                    "_value": "",
+                                    "_value": "errorMsg",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
@@ -2191,6 +2191,12 @@
                                     "_value": "13",
                                     "_type": "kv",
                                     "_attrDef": "c"
+                                },
+                                {
+                                    "_key": "#idNum",
+                                    "_value": "#idNum",
+                                    "_type": "a",
+                                    "_attrDef": "c"
                                 }
                             ]
                         },
@@ -2206,13 +2212,13 @@
                                 },
                                 {
                                     "_key": "class",
-                                    "_value": "",
+                                    "_value": "errorMsg",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
                                 {
                                     "_key": "text",
-                                    "_value": "Paragraph",
+                                    "_value": "Please enter a valid SA ID",
                                     "_type": "a",
                                     "_attrDef": "p",
                                     "_useAsLabel": true
@@ -2225,7 +2231,7 @@
                                 },
                                 {
                                     "_key": "*ngIf",
-                                    "_value": "isError",
+                                    "_value": "idError && (loginForm.controls.idNumber.value.length < 13)",
                                     "_type": "kv",
                                     "_attrDef": "c"
                                 }
@@ -2388,6 +2394,12 @@
                                     "_type": "a",
                                     "_attrDef": "p",
                                     "_visibility": true
+                                },
+                                {
+                                    "_key": "#pwd",
+                                    "_value": "#pwd",
+                                    "_type": "a",
+                                    "_attrDef": "c"
                                 }
                             ]
                         },
@@ -2403,13 +2415,13 @@
                                 },
                                 {
                                     "_key": "class",
-                                    "_value": "",
+                                    "_value": "errorMsg",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
                                 {
                                     "_key": "text",
-                                    "_value": "Paragraph",
+                                    "_value": "Password should be at least 4 characters long",
                                     "_type": "a",
                                     "_attrDef": "p",
                                     "_useAsLabel": true
@@ -2421,8 +2433,14 @@
                                     "_attrDef": "p"
                                 },
                                 {
+                                    "_key": "minLength",
+                                    "_value": "4",
+                                    "_type": "kv",
+                                    "_attrDef": "c"
+                                },
+                                {
                                     "_key": "*ngIf",
-                                    "_value": "isError",
+                                    "_value": "pswError",
                                     "_type": "kv",
                                     "_attrDef": "c"
                                 }
@@ -2592,7 +2610,7 @@
                                     },
                                     {
                                         "_key": "(click)",
-                                        "_value": "log()",
+                                        "_value": "log(idNum.value, pwd.value)",
                                         "_type": "kv",
                                         "_attrDef": "p"
                                     },

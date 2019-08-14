@@ -9,8 +9,11 @@ import { register } from "../../models/register.model";
 import { login } from "../../models/login.model";
 
 import { authService } from '../../services/auth/auth.service';
+import { fundvalueService } from '../../services/fundvalue/fundvalue.service';
 
 import { Router } from '@angular/router';
+
+import { NHTTPLoaderService } from 'neutrinos-seed-services';
 
 /**
  * Service import Example :
@@ -25,13 +28,19 @@ import { Router } from '@angular/router';
 export class loginComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
 
+    spinner = false;
+
     register: register;
     login: login;
 
     hasAccount: boolean = true;
-    isError: boolean = false;
+    idError: boolean = false;
+    pswError: boolean = false;
 
-    constructor(private bdms: NDataModelService, private auth: authService, private route: Router) {
+    constructor(
+        private bdms: NDataModelService, private auth: authService,
+        private route: Router, private fundvalue: fundvalueService,
+        private nLoader: NHTTPLoaderService) {
         super();
         this.mm = new ModelMethods(bdms);
         this.register = new register();
@@ -39,7 +48,9 @@ export class loginComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.nLoader._isHTTPRequestInProgress$.subscribe(res => {
+            this.spinner = res;
+        })
     }
 
     // Register
@@ -48,8 +59,16 @@ export class loginComponent extends NBaseComponent implements OnInit {
     }
 
     // Login
-    log() {
-        console.log(this.login);
+    log(idNum, pwd) {
+        if (idNum.length < 13) {
+            this.idError = true;
+            return false;
+        } else if (pwd.length < 4) {
+            this.pswError = true;
+            return false;
+        }
+
+        this.fundvalue.getFundValue();
         this.auth.logged = true;
         this.route.navigate(['/home']);
     }

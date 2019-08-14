@@ -14,6 +14,8 @@ window['neutrinos'] = {
 }
 
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-fundvalueService
+import { fundvalueService } from '../services/fundvalue/fundvalue.service';
 import { AuthGuard } from '../auth.guard';
 
 //CORE_REFERENCE_IMPORT-authService
@@ -79,6 +81,8 @@ export const appProviders = [
   },
   NAuthGuardService,
   //CORE_REFERENCE_PUSH_TO_PRO_ARRAY
+//CORE_REFERENCE_PUSH_TO_PRO_ARRAY-fundvalueService
+fundvalueService,
 //CORE_REFERENCE_PUSH_TO_PRO_ARRAY-authService
 authService,
 AuthGuard
