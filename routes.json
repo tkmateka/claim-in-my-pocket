@@ -2,7 +2,8 @@
     "routes": [
         {
             "component": "homeComponent",
-            "path": "home"
+            "path": "home",
+            "canActivate": "AuthGuard"
         },
         {
             "path": "login",

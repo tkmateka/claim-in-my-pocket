@@ -5,6 +5,13 @@ import { ModelMethods } from '../../lib/model.methods';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 
+import { register } from "../../models/register.model";
+import { login } from "../../models/login.model";
+
+import { authService } from '../../services/auth/auth.service';
+
+import { Router } from '@angular/router';
+
 /**
  * Service import Example :
  * import { HeroService } from '../../services/hero/hero.service';
@@ -18,15 +25,37 @@ import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 export class loginComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
 
-    hasAccount: boolean = false;
+    register: register;
+    login: login;
 
-    constructor(private bdms: NDataModelService) {
+    hasAccount: boolean = true;
+    isError: boolean = false;
+
+    constructor(private bdms: NDataModelService, private auth: authService, private route: Router) {
         super();
         this.mm = new ModelMethods(bdms);
+        this.register = new register();
+        this.login = new login();
     }
 
     ngOnInit() {
 
+    }
+
+    // Register
+    reg() {
+        console.log(this.register);
+    }
+
+    // Login
+    log() {
+        console.log(this.login);
+        this.auth.logged = true;
+        this.route.navigate(['/home']);
+    }
+
+    switchForm(bool) {
+        this.hasAccount = bool;
     }
 
 }

@@ -1,0 +1,53 @@
+{
+    "6496be14-75d5-5640-c13e-67a9aed9356a": {
+        "dataModelId": "6496be14-75d5-5640-c13e-67a9aed9356a",
+        "name": "register",
+        "description": "Register new user",
+        "dataSource": "neutrinos-delivery-rt",
+        "fields": [
+            {
+                "name": "name",
+                "fieldType": 2,
+                "isArray": false
+            },
+            {
+                "name": "surname",
+                "fieldType": 2,
+                "isArray": false
+            },
+            {
+                "name": "email",
+                "fieldType": 2,
+                "isArray": false
+            },
+            {
+                "name": "idNumber",
+                "fieldType": 1,
+                "isArray": false
+            },
+            {
+                "name": "password",
+                "fieldType": 2,
+                "isArray": false
+            }
+        ]
+    },
+    "4cb27c38-e5a5-887c-e0cc-6ab99e2509df": {
+        "dataModelId": "4cb27c38-e5a5-887c-e0cc-6ab99e2509df",
+        "name": "login",
+        "description": "Log user in",
+        "dataSource": "neutrinos-delivery-rt",
+        "fields": [
+            {
+                "name": "idNumber",
+                "fieldType": 1,
+                "isArray": false
+            },
+            {
+                "name": "password",
+                "fieldType": 2,
+                "isArray": false
+            }
+        ]
+    }
+}

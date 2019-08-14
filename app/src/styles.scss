@@ -2,3 +2,95 @@
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "nDefaults.scss";
+
+/* Color Variables */
+
+:root {
+    --primaryColor: black;
+    --secondaryColor: white;
+    --primaryBackground: #f57c00;
+    --primaryBackgroundLight: #ffcc80;
+    --errorMessage: red;
+}
+
+.maxHeight {
+    height: 100vh;
+}
+
+.textAlign {
+    text-align: center;
+}
+
+.width60 {
+    width: 60%;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.marginTop2 {
+    margin-top: 2em;
+}
+
+.loginH1 {
+    font-size: 3em;
+    margin: .5em 0;
+    color: orange;
+}
+
+.loginBtn {
+    background: var(--primaryBackground);
+    color: var(--secondaryColor);
+    width: 100%;
+}
+
+.cancelBtn {
+    background: var(--primaryColor);
+    color: var(--secondaryColor);
+    width: 100%;
+}
+
+.switchForm {
+    cursor: pointer;
+}
+
+.switchForm:hover, .logoText {
+    color: var(--primaryBackground);
+    font-weight: bold;
+}
+
+.toolBar {
+    height: 5em;
+}
+
+.homeTabGroup {
+    height: calc(100% - 7em);
+}
+
+.homeTabGroup .mat-tab-body-wrapper, .tabInnerContainer {
+    height: 100%
+}
+
+.userDetails {
+    margin: .3em;
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.balance {
+    height: 15em;
+    width: 15em;
+    border-radius: 50%;
+    background: var(--primaryBackground);
+    border: solid var(--primaryBackgroundLight) 5px;
+    color: var(--secondaryColor);
+}
+
+.transactions {
+    background: var(--primaryBackground);
+    border: solid var(--primaryBackgroundLight) 3px;
+    color: var(--secondaryColor);
+    border-radius: 20px;
+}

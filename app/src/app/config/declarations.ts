@@ -14,6 +14,10 @@ window['neutrinos'] = {
 }
 
 //CORE_REFERENCE_IMPORTS
+import { AuthGuard } from '../auth.guard';
+
+//CORE_REFERENCE_IMPORT-authService
+import { authService } from '../services/auth/auth.service';
 //CORE_REFERENCE_IMPORT-homeComponent
 import { homeComponent } from '../components/homeComponent/home.component';
 //CORE_REFERENCE_IMPORT-loginComponent
@@ -75,7 +79,9 @@ export const appProviders = [
   },
   NAuthGuardService,
   //CORE_REFERENCE_PUSH_TO_PRO_ARRAY
-
+//CORE_REFERENCE_PUSH_TO_PRO_ARRAY-authService
+authService,
+AuthGuard
 ];
 
 /**
@@ -83,5 +89,5 @@ export const appProviders = [
 */
 
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_START
-export const appRoutes = [{path: 'home', component: homeComponent},{path: 'login', component: loginComponent},{path: '', redirectTo: '/home', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
+export const appRoutes = [{path: 'home', component: homeComponent, canActivate: [AuthGuard]},{path: 'login', component: loginComponent},{path: '', redirectTo: '/home', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_END

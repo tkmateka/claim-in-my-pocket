@@ -1,1 +1,42 @@
-<div>default page template</div>
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+  <div fxLayout="column wrap" class="maxHeight" fxFlex="95" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+    <div fxLayout="row wrap" class="toolBar" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+      <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+        <h1 class="logoText">Clain In My Pocket</h1>
+      </div>
+      <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center end" fxShow="true" fxHide="false">
+        <p class="userDetails">Tukiso</p>
+        <p class="userDetails">Mateka</p>
+      </div>
+    </div>
+    <mat-tab-group class="homeTabGroup marginTop2" mat-stretch-tabs>
+      <mat-tab label="Tab 1">
+        <div fxLayout="column wrap" class="tabInnerContainer" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+          <div fxLayout="row wrap" class="balance marginTop2" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+            <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+              <p>Current Balance</p>
+              <h1>R 1350</h1>
+            </div>
+          </div>
+          <div fxLayout="column wrap" class="width100" fxLayoutGap=".5em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+            <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+              <p>Transaction 1</p>
+            </div>
+            <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+              <p>Transaction 2</p>
+            </div>
+            <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+              <p>Transaction 3</p>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Tab 2">
+        <h1>Tab 2 ready</h1>
+      </mat-tab>
+      <mat-tab label="Tab 3">
+        <h3>Tab 3 ready</h3>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

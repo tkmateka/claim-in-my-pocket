@@ -1,79 +1,79 @@
-<div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-  <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-    <form *ngIf="!hasAccount" class="register">
-      <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+<div fxLayout="row wrap" class="maxHeight" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+  <div fxLayout="column wrap" fxFlex="70" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" fxFlex.xs="100">
+    <form *ngIf="!hasAccount" #registerForm="ngForm" class="loginForm">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+        <h1 class="loginH1">Register</h1>
+      </div>
+      <div fxLayout="column wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="register.name" name="name" placeholder="Name" required>
+
+          </mat-form-field>
+          <p *ngIf="isError">Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="register.surname" name="surname" placeholder="Surname" required>
+
+          </mat-form-field>
+          <p *ngIf="isError">Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="register.email" name="email" placeholder="Email" required>
+
+          </mat-form-field>
+          <p *ngIf="isError">Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="register.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13">
+
+          </mat-form-field>
+          <p *ngIf="isError">Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="register.password" name="password" placeholder="Password" required>
+
+          </mat-form-field>
+          <p *ngIf="isError">Paragraph</p>
+        </div>
+        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg()" [disabled]="registerForm.invalid">Register</button></div>
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn">Cancel</button></div>
+        </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <h1>Register</h1>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <mat-form-field>
-            <input matInput placeholder="Name" required>
-
-          </mat-form-field>
-          <p>Paragraph</p>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <mat-form-field>
-            <input matInput placeholder="Surname" required>
-
-          </mat-form-field>
-          <p>Paragraph</p>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <mat-form-field>
-            <input matInput placeholder="Email" required>
-
-          </mat-form-field>
-          <p>Paragraph</p>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <mat-form-field>
-            <input matInput placeholder="ID Number" required>
-
-          </mat-form-field>
-          <p>Paragraph</p>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <mat-form-field>
-            <input matInput placeholder="Password" required>
-
-          </mat-form-field>
-          <p>Paragraph</p>
-        </div>
-        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Register</button></div>
-          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Cancel</button></div>
-        </div>
-        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <p>Already a user? <i>login</i></p>
+          <p (click)="switchForm(true)" class="switchForm">Already a user? <i>Login</i></p>
         </div>
       </div>
     </form>
-    <form *ngIf="hasAccount" class="login">
-      <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <h1>Login</h1>
-        </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+    <form *ngIf="hasAccount" #loginForm="ngForm" class="loginForm">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+        <h1 class="loginH1">Login</h1>
+      </div>
+      <div fxLayout="column wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
-            <input matInput placeholder="ID Number" required>
+            <input matInput [(ngModel)]="login.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13">
 
           </mat-form-field>
-          <p>Paragraph</p>
+          <p *ngIf="isError">Paragraph</p>
         </div>
-        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
-            <input matInput placeholder="Password" required>
+            <input matInput [(ngModel)]="login.password" name="password" placeholder="Password" required>
 
           </mat-form-field>
-          <p>Paragraph</p>
+          <p *ngIf="isError">Paragraph</p>
+        </div>
+        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="log()" [disabled]="loginForm.invalid">Login</button></div>
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn">Cancel</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Login</button></div>
-          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Cancel</button></div>
-        </div>
-        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <p>Don&apos;t have an account? <i>register</i></p>
+          <p (click)="switchForm(false)" class="switchForm">Don&apos;t have an account? <i>Register</i></p>
         </div>
       </div>
     </form>
