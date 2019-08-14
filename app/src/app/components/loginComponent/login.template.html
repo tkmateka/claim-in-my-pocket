@@ -1,0 +1,81 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+  <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+    <form *ngIf="!hasAccount" class="register">
+      <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <h1>Register</h1>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput placeholder="Name" required>
+
+          </mat-form-field>
+          <p>Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput placeholder="Surname" required>
+
+          </mat-form-field>
+          <p>Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput placeholder="Email" required>
+
+          </mat-form-field>
+          <p>Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput placeholder="ID Number" required>
+
+          </mat-form-field>
+          <p>Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput placeholder="Password" required>
+
+          </mat-form-field>
+          <p>Paragraph</p>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Register</button></div>
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Cancel</button></div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <p>Already a user? <i>login</i></p>
+        </div>
+      </div>
+    </form>
+    <form *ngIf="hasAccount" class="login">
+      <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <h1>Login</h1>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput placeholder="ID Number" required>
+
+          </mat-form-field>
+          <p>Paragraph</p>
+        </div>
+        <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput placeholder="Password" required>
+
+          </mat-form-field>
+          <p>Paragraph</p>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Login</button></div>
+          <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false"><button mat-raised-button>Cancel</button></div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <p>Don&apos;t have an account? <i>register</i></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

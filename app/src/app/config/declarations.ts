@@ -14,6 +14,10 @@ window['neutrinos'] = {
 }
 
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-homeComponent
+import { homeComponent } from '../components/homeComponent/home.component';
+//CORE_REFERENCE_IMPORT-loginComponent
+import { loginComponent } from '../components/loginComponent/login.component';
 
 /**
  * Reads datasource object and injects the datasource object into window object
@@ -49,6 +53,10 @@ export const appDeclarations = [
   NMapComponent,
   ArtImgSrcDirective,
   //CORE_REFERENCE_PUSH_TO_DEC_ARRAY
+//CORE_REFERENCE_PUSH_TO_DEC_ARRAY-homeComponent
+homeComponent,
+//CORE_REFERENCE_PUSH_TO_DEC_ARRAY-loginComponent
+loginComponent,
 
 ];
 
@@ -75,5 +83,5 @@ export const appProviders = [
 */
 
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_START
-export const appRoutes = [{ path: '', redirectTo: '/', pathMatch: 'full' }, { path: '**', component: PageNotFoundComponent }];
+export const appRoutes = [{path: 'home', component: homeComponent},{path: 'login', component: loginComponent},{path: '', redirectTo: '/home', pathMatch: 'full'},{path: '**', component: PageNotFoundComponent}]
 // CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY_END
