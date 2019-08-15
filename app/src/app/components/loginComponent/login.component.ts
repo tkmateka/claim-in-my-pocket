@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
 // import { BDataModelService } from '../service/bDataModel.service';
-import { NDataModelService } from 'neutrinos-seed-services';
+import { NDataModelService, NSnackbarService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 
 import { register } from "../../models/register.model";
@@ -42,7 +42,8 @@ export class loginComponent extends NBaseComponent implements OnInit {
     constructor(
         private bdms: NDataModelService, private auth: authService,
         private route: Router, private fundvalue: fundvalueService,
-        private emailService: emailService, private _location: Location) {
+        private emailService: emailService, private _location: Location, 
+        private alertService: NSnackbarService) {
         super();
         this.mm = new ModelMethods(bdms);
         this.register = new register();
@@ -75,31 +76,47 @@ export class loginComponent extends NBaseComponent implements OnInit {
 
         this.randomKey = Math.floor(1000 + Math.random() * 9000);
 
-        let emailsString = "tukiso.mateka@neutrinos.co";
-        let emailBody = "To login please enter the following number " + this.randomKey;
+        // let emailsString = "tukiso.mateka@neutrinos.co";
+        // let emailBody = "To login please enter the following number " + this.randomKey;
 
-        this.emailService.sendEmail(emailsString, emailBody);
+        // this.emailService.sendEmail(emailsString, emailBody);
 
         this.sentCode = true;
     }
 
-    verifyCode(a, b, c, d) {
+    cancelOtp() {
+        this.sentCode = false;
+    }
+
+    verifyCode(a, b, c, d, form) {
         let incomingCode = Number(`${a}${b}${c}${d}`);
 
-        console.log(this.randomKey, 'sent');
-        console.log(incomingCode, 'received');
+    console.log(this.randomKey);
 
         if (incomingCode == this.randomKey) {
             this.fundvalue.getFundValue();
             this.auth.logged = true;
             this.route.navigate(['/home']);
         } else {
-            console.log('Wrong code');
+            this.alertService.openSnackBar('Please enter a valid OTP code');
+            // form.reset();
         }
     }
 
+    // Switch form
     switchForm(bool) {
         this.hasAccount = bool;
+    }
+
+    // Switch Inputs
+    onInputEntry(event, nextInput) {
+        let input = event.target;
+        let length = input.value.length;
+        let maxLength = input.attributes.maxlength.value;
+
+        if (length >= maxLength) {
+            nextInput.focus();
+        }
     }
 
 }

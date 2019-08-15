@@ -5,6 +5,8 @@ import { ModelMethods } from '../../lib/model.methods';
 import { NDataModelService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 
+import { Router } from '@angular/router';
+
 import { fundvalueService } from '../../services/fundvalue/fundvalue.service';
 
 /**
@@ -28,7 +30,7 @@ export class homeComponent extends NBaseComponent implements OnInit {
     configurations: any = [];
 
     constructor(
-        private bdms: NDataModelService, private funds: fundvalueService) {
+        private bdms: NDataModelService, private funds: fundvalueService, private route: Router) {
         super();
         this.mm = new ModelMethods(bdms);
     }
@@ -48,7 +50,38 @@ export class homeComponent extends NBaseComponent implements OnInit {
         // Get Configurations
         this.funds.getConfigurations().then((res) => {
             this.configurations = res;
+            for (let i = 0; i < this.configurations.length; i++) {
+                this.configurations[i]['readOnly'] = true;
+                this.configurations[i]['showSubmit'] = false;
+            }
         })
     }
+
+    editConfig(sel) {
+        sel['readOnly'] = false;
+        sel['showSubmit'] = true;
+    }
+
+    submitConfig(sel) {
+        sel['readOnly'] = true;
+        sel['showSubmit'] = false;
+
+        delete sel['readOnly'];
+        delete sel['showSubmit'];
+
+        // Call post api...
+    }
+
+    // Cancel Config Edit
+    cancelConfigEdit(sel) {
+        sel['readOnly'] = true;
+        sel['showSubmit'] = false;
+    }
+
+    // Log Out
+    logout() {
+        this.route.navigate(['/login']);
+    }
+
 
 }

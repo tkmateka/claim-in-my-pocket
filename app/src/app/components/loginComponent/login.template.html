@@ -40,9 +40,8 @@
           </mat-form-field>
           <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
-        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg()" [disabled]="registerForm.invalid">Register</button></div>
-          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn">Cancel</button></div>
+        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg()" [disabled]="registerForm.invalid">Register</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <p (click)="switchForm(true)" class="switchForm">Already a user? <i>Login</i></p>
@@ -68,9 +67,8 @@
           </mat-form-field>
           <p minLength="4" *ngIf="pswError" class="errorMsg">Password should be at least 4 characters long</p>
         </div>
-        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="log(idNum.value, pwd.value)" [disabled]="loginForm.invalid">Login</button></div>
-          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn">Cancel</button></div>
+        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="log(idNum.value, pwd.value)" [disabled]="loginForm.invalid">Login</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <p (click)="switchForm(false)" class="switchForm">Don&apos;t have an account? <i>Register</i></p>
@@ -80,34 +78,39 @@
         <div fxLayout="row wrap" class="width80 textAlign" fxLayoutAlign="center center" fxShow="true" fxHide="false">
           <h3>Please enter the 4 digit code from your email...</h3>
         </div>
-        <div fxLayout="row wrap" class="width45" fxLayoutAlign="space-around center" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-            <mat-form-field>
-              <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code1>
+        <div fxLayout="row wrap" class="width45" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <form #otpForm="ngForm">
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+              <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                <mat-form-field>
+                  <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code1 size="1" (input)="onInputEntry($event, code2)">
 
-            </mat-form-field>
-          </div>
-          <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-            <mat-form-field>
-              <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code2>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                <mat-form-field>
+                  <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code2 size="1" (input)="onInputEntry($event, code3)">
 
-            </mat-form-field>
-          </div>
-          <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-            <mat-form-field>
-              <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code3>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                <mat-form-field>
+                  <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code3 size="1" (input)="onInputEntry($event, code4)">
 
-            </mat-form-field>
-          </div>
-          <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-            <mat-form-field>
-              <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code4>
+                </mat-form-field>
+              </div>
+              <div fxLayout="column wrap" fxFlex="10" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+                <mat-form-field>
+                  <input matInput required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="1" #code4 size="1">
 
-            </mat-form-field>
-          </div>
+                </mat-form-field>
+              </div>
+            </div>
+          </form>
         </div>
-        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="verifyCode(code1.value, code2.value, code3.value, code4.value)">Login</button></div>
+        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="verifyCode(code1.value, code2.value, code3.value, code4.value, otpForm)">Login</button></div>
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn" (click)="cancelOtp()">Cancel</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <p (click)="switchForm(false)" class="switchForm">Don&apos;t have an account? <i>Register</i></p>

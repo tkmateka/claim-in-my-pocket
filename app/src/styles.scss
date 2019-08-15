@@ -51,10 +51,11 @@
     color: orange;
 }
 
-.loginBtn {
+.loginBtn, .editBtn:hover {
     background: var(--primaryBackground);
     color: var(--secondaryColor);
     width: 100%;
+    cursor: pointer;
 }
 
 .cancelBtn {
@@ -77,13 +78,27 @@
     text-align: center;
 }
 
+.logo img {
+    height: 8em;
+}
+
+.logoutIcon {
+    font-size: xx-large;
+}
+
+.logoutIcon:hover {
+    color: var(--secondaryColor);
+}
+
 .toolBar {
     height: 5em;
     background: var(--primaryColor);
+    padding: 0 1em 0 .5em;
 }
 
 .homeTabGroup {
     height: calc(100% - 9em);
+    width: 98%;
 }
 
 .homeTabGroup .mat-tab-body-wrapper, .tabInnerContainer {
@@ -147,9 +162,22 @@
 }
 
 .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--primaryColor);
+}
+
+.transCards .mat-form-field-appearance-legacy.mat-form-field.mat-focused .mat-form-field-underline {
+    background-color: green;
+}
+
+.configCards:hover {
+    cursor: pointer;
+    border: solid var(--primaryBackground) 5px;
+    background: var(--primaryBackgroundLight);
     color: var(--primaryBackground);
 }
 
-.mat-input-element {
-    caret-color: var(--primaryBackground);
+.editBtn {
+    background: var(--secondaryColor);
+    color: var(--primaryBackground);
+    width: 100%;
 }
