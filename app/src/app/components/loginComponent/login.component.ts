@@ -10,10 +10,11 @@ import { login } from "../../models/login.model";
 
 import { authService } from '../../services/auth/auth.service';
 import { fundvalueService } from '../../services/fundvalue/fundvalue.service';
+import { emailService } from '../../services/email/email.service';
 
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { NHTTPLoaderService } from 'neutrinos-seed-services';
 
 /**
  * Service import Example :
@@ -28,19 +29,20 @@ import { NHTTPLoaderService } from 'neutrinos-seed-services';
 export class loginComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
 
-    spinner = false;
-
     register: register;
     login: login;
 
     hasAccount: boolean = true;
     idError: boolean = false;
     pswError: boolean = false;
+    sentCode: boolean = false;
+
+    randomKey;
 
     constructor(
         private bdms: NDataModelService, private auth: authService,
         private route: Router, private fundvalue: fundvalueService,
-        private nLoader: NHTTPLoaderService) {
+        private emailService: emailService, private _location: Location) {
         super();
         this.mm = new ModelMethods(bdms);
         this.register = new register();
@@ -48,9 +50,12 @@ export class loginComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.nLoader._isHTTPRequestInProgress$.subscribe(res => {
-            this.spinner = res;
-        })
+
+    }
+
+    // Go Back
+    goback() {
+        this._location.back();
     }
 
     // Register
@@ -68,9 +73,29 @@ export class loginComponent extends NBaseComponent implements OnInit {
             return false;
         }
 
-        this.fundvalue.getFundValue();
-        this.auth.logged = true;
-        this.route.navigate(['/home']);
+        this.randomKey = Math.floor(1000 + Math.random() * 9000);
+
+        let emailsString = "tukiso.mateka@neutrinos.co";
+        let emailBody = "To login please enter the following number " + this.randomKey;
+
+        this.emailService.sendEmail(emailsString, emailBody);
+
+        this.sentCode = true;
+    }
+
+    verifyCode(a, b, c, d) {
+        let incomingCode = Number(`${a}${b}${c}${d}`);
+
+        console.log(this.randomKey, 'sent');
+        console.log(incomingCode, 'received');
+
+        if (incomingCode == this.randomKey) {
+            this.fundvalue.getFundValue();
+            this.auth.logged = true;
+            this.route.navigate(['/home']);
+        } else {
+            console.log('Wrong code');
+        }
     }
 
     switchForm(bool) {
