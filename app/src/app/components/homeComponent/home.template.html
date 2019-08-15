@@ -42,8 +42,8 @@
         </div>
       </mat-tab>
       <mat-tab label="Transaction">
-        <div fxLayout="column wrap" class="tabInnerContainer marginTopBottom2" fxLayoutGap="2em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-          <mat-card *ngFor="let trans of transactions" class="width80 transCards">
+        <div fxLayout="column wrap" class="marginTopBottom2" fxLayoutGap="2em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <mat-card *ngFor="let trans of transactions[0]" class="width80 transCards">
             <mat-card-content>
               <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
                 <div fxLayout="row wrap" class="width100" fxLayoutAlign="center center" fxShow="true" fxHide="false">
@@ -109,8 +109,8 @@
         </div>
       </mat-tab>
       <mat-tab label="Configuration">
-        <div fxLayout="column wrap" class="tabInnerContainer marginTopBottom2" fxLayoutGap="2em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-          <mat-card *ngFor="let config of configurations; let i = index;" class="width80 transCards configCards">
+        <div fxLayout="column wrap" class="marginTopBottom2" fxLayoutGap="2em" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <mat-card *ngFor="let config of configurations[0]; let i = index;" class="width80 transCards configCards">
             <mat-card-content>
               <div fxLayout="column wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">

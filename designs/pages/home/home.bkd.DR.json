@@ -1949,7 +1949,7 @@
                             },
                             {
                                 "_key": "class",
-                                "_value": "tabInnerContainer marginTopBottom2",
+                                "_value": "marginTopBottom2",
                                 "_type": "kv",
                                 "_attrDef": "p"
                             },
@@ -2028,7 +2028,7 @@
                                 },
                                 {
                                     "_key": "*ngFor",
-                                    "_value": "let trans of transactions",
+                                    "_value": "let trans of transactions[0]",
                                     "_type": "kv",
                                     "_attrDef": "c"
                                 }
@@ -3796,7 +3796,7 @@
                             },
                             {
                                 "_key": "class",
-                                "_value": "tabInnerContainer marginTopBottom2",
+                                "_value": "marginTopBottom2",
                                 "_type": "kv",
                                 "_attrDef": "p"
                             },
@@ -3875,7 +3875,7 @@
                                 },
                                 {
                                     "_key": "*ngFor",
-                                    "_value": "let config of configurations; let i = index;",
+                                    "_value": "let config of configurations[0]; let i = index;",
                                     "_type": "kv",
                                     "_attrDef": "c"
                                 }

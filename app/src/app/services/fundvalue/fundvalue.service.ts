@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class fundvalueService {
     urlBmodeller = 'http://10.200.65.39:24483/api/';
 
+    idNumber:number = 0;
+
     constructor(private http: HttpClient) {
 
     }

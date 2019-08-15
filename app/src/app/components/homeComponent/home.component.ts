@@ -25,6 +25,8 @@ export class homeComponent extends NBaseComponent implements OnInit {
     noTransact: boolean = true;
     showContent: boolean = false;
 
+    idNum: any = '';
+
     fundvalue: any = [];
     transactions: any = [];
     configurations: any = [];
@@ -36,20 +38,55 @@ export class homeComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.idNum = this.funds.idNumber;
         // Get Fund Value
         this.funds.getFundValue().then((res) => {
-            this.fundvalue = res;
+            let selectedUser = [];
+
+            for (let i = 0; i < res.length; i++) {
+                if (res[i]['idNumber'].trim() == this.idNum) {
+                    selectedUser.push(res[i]);
+                }
+            };
+
+            this.fundvalue.push(selectedUser);
+
             this.showContent = true;
         })
 
         // Get Transactions
         this.funds.getTransactions().then((res) => {
-            this.transactions = res;
+            let selectedUser = [];
+
+            console.log(res, 'Before loop');
+
+            for (let i = 0; i < res.length; i++) {
+                if (res[i]['idNumber'].trim() == this.idNum) {
+                    selectedUser.push(res[i]);
+                }
+            };
+
+            this.transactions.push(selectedUser);
+
+            console.log("Transactions", this.transactions)
         })
 
         // Get Configurations
         this.funds.getConfigurations().then((res) => {
-            this.configurations = res;
+            let selectedUser = [];
+
+            console.log(res, 'Before loop');
+
+            for (let i = 0; i < res.length; i++) {
+                if (res[i]['idNumber'].trim() == this.idNum) {
+                    selectedUser.push(res[i]);
+                }
+            };
+
+            this.configurations.push(selectedUser);
+
+            console.log("Configurations", this.configurations)
+
             for (let i = 0; i < this.configurations.length; i++) {
                 this.configurations[i]['readOnly'] = true;
                 this.configurations[i]['showSubmit'] = false;

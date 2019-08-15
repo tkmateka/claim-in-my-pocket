@@ -76,10 +76,12 @@ export class loginComponent extends NBaseComponent implements OnInit {
 
         this.randomKey = Math.floor(1000 + Math.random() * 9000);
 
-        // let emailsString = "tukiso.mateka@neutrinos.co";
-        // let emailBody = "To login please enter the following number " + this.randomKey;
+        let emailsString = "tukiso.mateka@neutrinos.co";
+        let emailBody = "To login please enter the following number " + this.randomKey;
 
-        // this.emailService.sendEmail(emailsString, emailBody);
+        this.emailService.sendEmail(emailsString, emailBody);
+
+        this.fundvalue.idNumber = idNum;
 
         this.sentCode = true;
     }
@@ -99,7 +101,6 @@ export class loginComponent extends NBaseComponent implements OnInit {
             this.route.navigate(['/home']);
         } else {
             this.alertService.openSnackBar('Please enter a valid OTP code');
-            // form.reset();
         }
     }
 
