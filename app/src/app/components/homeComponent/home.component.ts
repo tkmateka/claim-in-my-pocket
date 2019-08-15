@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
 // import { BDataModelService } from '../service/bDataModel.service';
-import { NDataModelService } from 'neutrinos-seed-services';
+import { NDataModelService, NSnackbarService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 
 import { Router } from '@angular/router';
@@ -35,7 +35,8 @@ export class homeComponent extends NBaseComponent implements OnInit {
     first3Transactions: any = [];
 
     constructor(
-        private bdms: NDataModelService, private funds: fundvalueService, private route: Router) {
+        private bdms: NDataModelService, private funds: fundvalueService, private route: Router,
+        private alertService: NSnackbarService) {
         super();
         this.mm = new ModelMethods(bdms);
     }
@@ -132,10 +133,7 @@ export class homeComponent extends NBaseComponent implements OnInit {
     claim(){
         this.funds.claim().then((res:any) => {
             this.claimRes = res;
-            alert(
-                `Status: ${res.status},
-                 Description: ${res.description}`
-            )
+            this.alertService.openSnackBar(res.description);
             console.log(this.claimRes, 'Claim res');
         });
     }
