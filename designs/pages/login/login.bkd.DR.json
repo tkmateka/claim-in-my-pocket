@@ -83,13 +83,13 @@
                 },
                 {
                     "_key": "class",
-                    "_value": "",
+                    "_value": "loginContainer",
                     "_type": "kv",
                     "_attrDef": "p"
                 },
                 {
                     "_key": "fxFlex",
-                    "_value": "70",
+                    "_value": "",
                     "_type": "kv",
                     "_attrDef": "p"
                 },
@@ -161,7 +161,7 @@
                     },
                     {
                         "_key": "fxFlex",
-                        "_value": "70",
+                        "_value": "",
                         "_type": "kv",
                         "_attrDef": "p"
                     },
@@ -1271,6 +1271,12 @@
                                     "_value": "13",
                                     "_type": "kv",
                                     "_attrDef": "c"
+                                },
+                                {
+                                    "_key": "#regId",
+                                    "_value": "#regId",
+                                    "_type": "a",
+                                    "_attrDef": "c"
                                 }
                             ]
                         },
@@ -1528,7 +1534,7 @@
                             },
                             {
                                 "_key": "class",
-                                "_value": "width60 marginTop2",
+                                "_value": "width60",
                                 "_type": "kv",
                                 "_attrDef": "p"
                             },
@@ -1672,7 +1678,7 @@
                                     },
                                     {
                                         "_key": "(click)",
-                                        "_value": "reg()",
+                                        "_value": "reg(regId.value)",
                                         "_type": "kv",
                                         "_attrDef": "p"
                                     },
@@ -1789,7 +1795,7 @@
                                 },
                                 {
                                     "_key": "text",
-                                    "_value": "Already a user? <i>Login</i>",
+                                    "_value": "Already a user? <i class=\"register\">Login</i>",
                                     "_type": "a",
                                     "_attrDef": "p",
                                     "_useAsLabel": true
@@ -2751,7 +2757,7 @@
                                 },
                                 {
                                     "_key": "text",
-                                    "_value": "Don't have an account? <i>Register</i>",
+                                    "_value": "Don't have an account? <i class=\"register\">Register</i>",
                                     "_type": "a",
                                     "_attrDef": "p",
                                     "_useAsLabel": true
@@ -4299,7 +4305,7 @@
                                 },
                                 {
                                     "_key": "text",
-                                    "_value": "Don't have an account? <i>Register</i>",
+                                    "_value": "Don't have an account? <i class=\"register\">Register</i>",
                                     "_type": "a",
                                     "_attrDef": "p",
                                     "_useAsLabel": true

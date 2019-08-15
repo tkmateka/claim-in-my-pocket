@@ -7,7 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class fundvalueService {
     urlBmodeller = 'http://10.200.65.39:24483/api/';
 
-    idNumber:number = 0;
+    idNumber: number = 0;
+    fundValue: any = [];
 
     constructor(private http: HttpClient) {
 
@@ -17,6 +18,7 @@ export class fundvalueService {
     getFundValue() {
         return new Promise((resolve, reject) => {
             return this.http.get(this.urlBmodeller + 'fundvalue').subscribe((res) => {
+                console.log(res)
                 return resolve(res);
             }, (err) => {
                 return reject(err);
@@ -39,6 +41,36 @@ export class fundvalueService {
     getConfigurations() {
         return new Promise((resolve, reject) => {
             return this.http.get(this.urlBmodeller + 'configurations').subscribe((res) => {
+                return resolve(res);
+            }, (err) => {
+                return reject(err);
+            })
+        })
+    }
+
+    // Register
+    register(id) {
+        let body = id;
+        return new Promise((resolve, reject) => {
+            return this.http.post(this.urlBmodeller + 'register', body).subscribe((res) => {
+                return resolve(res);
+            }, (err) => {
+                return reject(err);
+            })
+        })
+    }
+
+
+    // Claim
+    claim() {
+        let body = {
+            "idNumber": "9303030896087",
+            "referenceNumber": "888081354",
+            "claimValue": "50",
+            "claimComment": "test"
+        };
+        return new Promise((resolve, reject) => {
+            return this.http.post(this.urlBmodeller + 'claim', body).subscribe((res) => {
                 return resolve(res);
             }, (err) => {
                 return reject(err);

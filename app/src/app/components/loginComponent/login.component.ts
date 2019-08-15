@@ -42,7 +42,7 @@ export class loginComponent extends NBaseComponent implements OnInit {
     constructor(
         private bdms: NDataModelService, private auth: authService,
         private route: Router, private fundvalue: fundvalueService,
-        private emailService: emailService, private _location: Location, 
+        private emailService: emailService, private _location: Location,
         private alertService: NSnackbarService) {
         super();
         this.mm = new ModelMethods(bdms);
@@ -60,8 +60,11 @@ export class loginComponent extends NBaseComponent implements OnInit {
     }
 
     // Register
-    reg() {
-        console.log(this.register);
+    reg(id) {
+        this.fundvalue.register(id).then((res:any) => {
+            console.log(res);
+            this.hasAccount = true;
+        })
     }
 
     // Login
@@ -93,10 +96,10 @@ export class loginComponent extends NBaseComponent implements OnInit {
     verifyCode(a, b, c, d, form) {
         let incomingCode = Number(`${a}${b}${c}${d}`);
 
-    console.log(this.randomKey);
+        console.log(this.randomKey);
 
         if (incomingCode == this.randomKey) {
-            this.fundvalue.getFundValue();
+            this.alertService.openSnackBar('Login successful');
             this.auth.logged = true;
             this.route.navigate(['/home']);
         } else {

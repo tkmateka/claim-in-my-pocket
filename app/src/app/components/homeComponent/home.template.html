@@ -6,7 +6,7 @@
         <mat-icon class="logoutIcon logoText" title="Logout" (click)="logout()">power_settings_new</mat-icon>
       </div>
     </div>
-    <mat-tab-group class="homeTabGroup marginTop2" mat-stretch-tabs>
+    <mat-tab-group class="homeTabGroup" mat-stretch-tabs>
       <mat-tab label="Balance">
         <div fxLayout="column wrap" class="tabInnerContainer" fxLayoutAlign="space-between center" fxShow="true" fxHide="false" *ngIf="showContent">
           <div fxLayout="row wrap" class="balance marginTop2" fxLayoutAlign="center center" fxShow="true" fxHide="false">
@@ -15,29 +15,34 @@
               <h1 class="textAlign amount">R {{fundvalue[0][&apos;fundvalueavailible&apos;]}}.00</h1>
             </div>
           </div>
-          <div fxLayout="row wrap" class="width100" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" *ngIf="noTransact">
+          <div fxLayout="row wrap" class="width100" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" *ngIf="!first3Transactions.length">
             <div fxLayout="column wrap" class="width100" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
               <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
                 <h3>No transactions yet...</h3>
               </div>
               <div fxLayout="row wrap" class="marginTop2 transactContainer" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-                <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn">Claim Now</button></div>
+                <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="claim()">Claim Now</button></div>
               </div>
             </div>
           </div>
-          <div fxLayout="column wrap" class="width100" fxLayoutGap=".5em" fxLayoutAlign="center center" fxShow="true" fxHide="false" *ngIf="!noTransact">
-            <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-              <p>Transaction 1</p>
+          <div fxLayout="column wrap" class="width100 threeTransactions" fxLayoutGap=".5em" fxLayoutAlign="center center" fxShow="true" fxHide="false" *ngIf="first3Transactions.length">
+            <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="space-between center" fxShow="true" fxHide="false" *ngFor="let trans of first3Transactions">
+              <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start center" fxShow="true" fxHide="false">
+                <mat-form-field>
+                  <input matInput placeholder="Transaction Date" value="{{trans.transactionDate | slice:0:10}}" required readonly="true">
+
+                </mat-form-field>
+              </div>
+              <div fxLayout="column wrap" fxFlex="48" fxLayoutAlign="start center" fxShow="true" fxHide="false">
+                <mat-form-field>
+                  <input matInput placeholder="Transaction Value" value="R {{trans.transactionValue}}.00" required readonly="true">
+
+                </mat-form-field>
+              </div>
             </div>
-            <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-              <p>Transaction 2</p>
-            </div>
-            <div fxLayout="row wrap" class="width100 transactions" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-              <p>Transaction 3</p>
-            </div>
-            <div fxLayout="row wrap" class="marginTop2 transactContainer width100" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-              <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn">Claim Now</button></div>
-            </div>
+          </div>
+          <div fxLayout="row wrap" class="transactContainer width100" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+            <div fxLayout="column wrap" fxFlex="30" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="claim()">Claim Now</button></div>
           </div>
         </div>
       </mat-tab>

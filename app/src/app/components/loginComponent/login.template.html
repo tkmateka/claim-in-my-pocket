@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" class="maxHeight" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-  <div fxLayout="column wrap" fxFlex="70" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" fxFlex.xs="100">
-    <div fxLayout="column wrap" class="loginImg" fxFlex="70" fxLayoutAlign="center center" fxShow="true" fxHide="false"><img imgSrc="Web/logo.png"></div>
+  <div fxLayout="column wrap" class="loginContainer" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" fxFlex.xs="100">
+    <div fxLayout="column wrap" class="loginImg" fxLayoutAlign="center center" fxShow="true" fxHide="false"><img imgSrc="Web/logo.png"></div>
     <form *ngIf="!hasAccount" #registerForm="ngForm" class="loginForm">
       <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
         <h1 class="loginH1">Register</h1>
@@ -29,7 +29,7 @@
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
-            <input matInput [(ngModel)]="register.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13">
+            <input matInput [(ngModel)]="register.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13" #regId>
 
           </mat-form-field>
           <p *ngIf="isError" class="errorMsg">Paragraph</p>
@@ -41,11 +41,11 @@
           </mat-form-field>
           <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
-        <div fxLayout="row wrap" class="width60 marginTop2" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg()" [disabled]="registerForm.invalid">Register</button></div>
+        <div fxLayout="row wrap" class="width60" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg(regId.value)" [disabled]="registerForm.invalid">Register</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <p (click)="switchForm(true)" class="switchForm">Already a user? <i>Login</i></p>
+          <p (click)="switchForm(true)" class="switchForm">Already a user? <i class="register">Login</i></p>
         </div>
       </div>
     </form>
@@ -72,7 +72,7 @@
           <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="log(idNum.value, pwd.value)" [disabled]="loginForm.invalid">Login</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <p (click)="switchForm(false)" class="switchForm">Don&apos;t have an account? <i>Register</i></p>
+          <p (click)="switchForm(false)" class="switchForm">Don&apos;t have an account? <i class="register">Register</i></p>
         </div>
       </div>
       <div fxLayout="column wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false" *ngIf="sentCode">
@@ -114,7 +114,7 @@
           <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn" (click)="cancelOtp()">Cancel</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
-          <p (click)="switchForm(false)" class="switchForm">Don&apos;t have an account? <i>Register</i></p>
+          <p (click)="switchForm(false)" class="switchForm">Don&apos;t have an account? <i class="register">Register</i></p>
         </div>
       </div>
     </form>

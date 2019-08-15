@@ -22,7 +22,6 @@ import { fundvalueService } from '../../services/fundvalue/fundvalue.service';
 export class homeComponent extends NBaseComponent implements OnInit {
     mm: ModelMethods;
 
-    noTransact: boolean = true;
     showContent: boolean = false;
 
     idNum: any = '';
@@ -30,6 +29,10 @@ export class homeComponent extends NBaseComponent implements OnInit {
     fundvalue: any = [];
     transactions: any = [];
     configurations: any = [];
+
+    claimRes: any = [];
+
+    first3Transactions: any = [];
 
     constructor(
         private bdms: NDataModelService, private funds: fundvalueService, private route: Router) {
@@ -39,6 +42,7 @@ export class homeComponent extends NBaseComponent implements OnInit {
 
     ngOnInit() {
         this.idNum = this.funds.idNumber;
+        
         // Get Fund Value
         this.funds.getFundValue().then((res:any) => {
             let selectedUser = [];
@@ -67,8 +71,12 @@ export class homeComponent extends NBaseComponent implements OnInit {
             };
 
             this.transactions.push(selectedUser);
+            console.log("Transactions", this.transactions);
 
-            console.log("Transactions", this.transactions)
+            this.first3Transactions.push(this.transactions[0].slice(0, 3));
+            this.first3Transactions = this.first3Transactions[0];
+            console.log("First 3 Transactions", this.first3Transactions);
+
         })
 
         // Get Configurations
@@ -107,6 +115,7 @@ export class homeComponent extends NBaseComponent implements OnInit {
         delete sel['showSubmit'];
 
         // Call post api...
+
     }
 
     // Cancel Config Edit
@@ -118,6 +127,17 @@ export class homeComponent extends NBaseComponent implements OnInit {
     // Log Out
     logout() {
         this.route.navigate(['/login']);
+    }
+
+    claim(){
+        this.funds.claim().then((res:any) => {
+            this.claimRes = res;
+            alert(
+                `Status: ${res.status},
+                 Description: ${res.description}`
+            )
+            console.log(this.claimRes, 'Claim res');
+        });
     }
 
 

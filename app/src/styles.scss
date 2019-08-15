@@ -45,8 +45,9 @@
     margin: 2em 0;
 }
 
-.loginImg img {
-    height: 13em;
+.loginContainer {
+    height: 90%;
+    display: block !important;
 }
 
 .loginH1 {
@@ -72,7 +73,7 @@
     cursor: pointer;
 }
 
-.switchForm:hover, .logoText {
+.switchForm:hover, .logoText, .register {
     color: var(--primaryBackground);
     font-weight: bold;
 }
@@ -83,7 +84,7 @@
 }
 
 .logo img {
-    height: 8em;
+    height: 4em;
 }
 
 .logoutIcon {
@@ -101,12 +102,12 @@
 }
 
 .homeTabGroup {
-    height: calc(100% - 9em);
+    height: calc(100% - 8em);
     width: 98%;
 }
 
 .homeTabGroup .mat-tab-body-wrapper, .tabInnerContainer {
-    min-height: 95%
+    min-height: 98%
 }
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar,
@@ -122,8 +123,9 @@
 }
 
 .balance {
-    height: 12em;
-    width: 12em;
+    margin-top: 1em;
+    height: 10em;
+    width: 10em;
     border-radius: 50%;
     background: var(--primaryBackground);
     border: solid var(--primaryBackgroundLight) 5px;
@@ -139,6 +141,9 @@
     border: solid var(--primaryBackgroundLight) 3px;
     color: var(--secondaryColor);
     border-radius: 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1em;
 }
 
 .transactContainer {
@@ -184,4 +189,10 @@
     background: var(--secondaryColor);
     color: var(--primaryBackground);
     width: 100%;
+}
+
+.threeTransactions {
+    height: 12em;
+    overflow-y: auto;
+    display: block !important;
 }
