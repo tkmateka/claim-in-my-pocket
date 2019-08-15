@@ -3,7 +3,7 @@ export const environment = {
     "name": "prod",
     "properties": {
         "production": true,
-        "baseUrl": "http://localhost:3000/bhive-art/",
+        "baseUrl": "http://10.200.65.39:3000/bhive-art/",
         "tenantName": "neutrinos-delivery",
         "appName": "claim-in-my-pocket",
         "namespace": "com.neutrinos-delivery.claim-in-my-pocket",

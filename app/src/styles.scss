@@ -86,7 +86,8 @@
     min-height: 95%
 }
 
-.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar,
+.mat-form-field.mat-focused .mat-form-field-ripple {
     background-color: var(--primaryBackground);
 }
 
@@ -127,5 +128,24 @@
 }
 
 .transCards {
-    background: var(--primaryBackgroundLight);
+    border: solid var(--primaryBackgroundLight) 5px;
+    background: var(--primaryBackground);
+    color: var(--secondaryColor);
+    border-radius: 25px !important;
+}
+
+.transCards .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: var(--secondaryColor);
+}
+
+.transCards .mat-form-field-label {
+    color: var(--secondaryColor);
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--primaryBackground);
+}
+
+.mat-input-element {
+    caret-color: var(--primaryBackground);
 }

@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class fundvalueService {
-    urlBmodeller = 'http://127.0.0.1:24483/api/';
+    urlBmodeller = 'http://10.200.65.39:24483/api/';
 
     constructor(private http: HttpClient) {
 
