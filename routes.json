@@ -10,6 +10,10 @@
             "component": "loginComponent"
         },
         {
+            "path": "claim",
+            "component": "claimComponent"
+        },
+        {
             "path": "''",
             "redirectTo": "/home",
             "pathMatch": "full",

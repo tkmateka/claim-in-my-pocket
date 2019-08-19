@@ -1,4 +1,101 @@
 {
+    "c1d3f3b3-4663-184a-b56c-93ea61a3c186": {
+        "paletteKey": "FlexLayoutRow",
+        "designerReference": [
+            {
+                "_key": "componentLabel",
+                "_value": "Row",
+                "_type": "kv",
+                "_attrDef": "p",
+                "_useAsLabel": true
+            },
+            {
+                "_key": "style",
+                "_value": "",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "class",
+                "_value": "",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "fxFlex",
+                "_value": "",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "fxLayoutGap",
+                "_value": "",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "wrap",
+                "_value": "wrap",
+                "_type": "a",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "layoutAlign",
+                "_value": "start",
+                "_type": "a",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "pLayoutAlign",
+                "_value": "stretch",
+                "_type": "a",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "fxShow",
+                "_value": "true",
+                "_type": "kv",
+                "_attrDef": "p"
+            },
+            {
+                "_key": "fxHide",
+                "_value": "false",
+                "_type": "kv",
+                "_attrDef": "p"
+            }
+        ],
+        "091cc83e-788a-ebda-8b33-3d20db3c0900": {
+            "paletteKey": "HTML",
+            "parentEditorKey": "c1d3f3b3-4663-184a-b56c-93ea61a3c186",
+            "designerReference": [
+                {
+                    "_key": "componentLabel",
+                    "_value": "HTML",
+                    "_type": "kv",
+                    "_attrDef": "p",
+                    "_useAsLabel": true
+                },
+                {
+                    "_key": "style",
+                    "_value": "",
+                    "_type": "kv",
+                    "_attrDef": "p"
+                },
+                {
+                    "_key": "class",
+                    "_value": "",
+                    "_type": "kv",
+                    "_attrDef": "p"
+                },
+                {
+                    "_key": "html",
+                    "_value": "<div fxLayout=\"row wrap\" fxLayoutAlign=\"start stretch\" fxShow=\"true\" fxHide=\"false\" *ngIf=\"spinner\">\n\t<mat-spinner style=\"position: fixed;z-index: 999;   height: 2em;   width: 2em;   overflow: show;   margin: auto;   top: 0;   left: 0;   bottom: 0;   right: 0;\"\n\t id=\"2d474ed4-5064-2e80-1146-ba27d907aef5\"></mat-spinner>\n</div>",
+                    "_type": "a",
+                    "_attrDef": "p"
+                }
+            ]
+        }
+    },
     "3a53fcac-6555-150b-99b3-a6ec8e13868b": {
         "paletteKey": "FlexLayoutRow",
         "designerReference": [
@@ -1440,7 +1537,7 @@
                                 },
                                 {
                                     "_key": "type",
-                                    "_value": "",
+                                    "_value": "password",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },
@@ -1678,7 +1775,7 @@
                                     },
                                     {
                                         "_key": "(click)",
-                                        "_value": "reg(regId.value)",
+                                        "_value": "reg(registerForm.value)",
                                         "_type": "kv",
                                         "_attrDef": "p"
                                     },
@@ -2390,7 +2487,7 @@
                                 },
                                 {
                                     "_key": "type",
-                                    "_value": "",
+                                    "_value": "password",
                                     "_type": "kv",
                                     "_attrDef": "p"
                                 },

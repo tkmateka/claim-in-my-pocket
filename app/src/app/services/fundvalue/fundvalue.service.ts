@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class fundvalueService {
-    urlBmodeller = 'http://10.200.65.39:24483/api/';
+    // urlBmodeller = 'http://10.200.65.39:24483/api/';
+    urlBmodeller = 'http://127.0.0.1:24483/api/';
 
     idNumber: number = 0;
     fundValue: any = [];
@@ -58,16 +59,17 @@ export class fundvalueService {
                 return reject(err);
             })
         })
+        // return this.http.post(this.urlBmodeller + 'register', body).toPromise();
     }
 
 
     // Claim
-    claim() {
+    claim(claim) {
         let body = {
-            "idNumber": "9303030896087",
-            "referenceNumber": "888081354",
-            "claimValue": "50",
-            "claimComment": "test"
+            "idNumber": claim.idNumber,
+            "referenceNumber": claim.referenceNumber,
+            "claimValue": claim.claimValue,
+            "claimComment": claim.claimComment
         };
         return new Promise((resolve, reject) => {
             return this.http.post(this.urlBmodeller + 'claim', body).subscribe((res) => {

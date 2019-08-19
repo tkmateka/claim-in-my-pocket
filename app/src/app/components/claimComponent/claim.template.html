@@ -1,0 +1,39 @@
+<div fxLayout="row wrap" class="maxHeight" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+  <div fxLayout="column wrap" class="loginContainer" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" fxFlex.xs="100">
+    <form #claimForm="ngForm" class="loginForm">
+      <div fxLayout="row wrap" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+        <h1 class="loginH1">Claim</h1>
+      </div>
+      <div fxLayout="column wrap" class="loginForm" fxLayoutAlign="center center" fxShow="true" fxHide="false">
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="claim.idNumber" name="idNumber" placeholder="ID Number" required oninput="this.value = this.value.replace(/[^0-9]/g, &apos;&apos;)" maxLength="13" #regId>
+
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="claim.referenceNumber" name="referenceNumber" placeholder="Reference Number" required>
+
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="claim.claimValue" name="claimValue" placeholder="Claim Value" required>
+
+          </mat-form-field>
+        </div>
+        <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+          <mat-form-field>
+            <input matInput [(ngModel)]="claim.claimComment" name="claimComment" placeholder="Claim Comment">
+
+          </mat-form-field>
+        </div>
+        <div fxLayout="row wrap" class="width60" fxLayoutAlign="space-between center" fxShow="true" fxHide="false">
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="claimFunc(claimForm.value)" [disabled]="claimForm.invalid">Claim</button></div>
+          <div fxLayout="column wrap" fxFlex="45" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="cancelBtn" (click)="cancel()">Cancel</button></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

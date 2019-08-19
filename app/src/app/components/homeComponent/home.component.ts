@@ -54,6 +54,8 @@ export class homeComponent extends NBaseComponent implements OnInit {
                 }
             };
 
+            console.log(selectedUser)
+
             this.fundvalue.push(selectedUser[0]);
             console.log(this.fundvalue, 'Before loop');
             this.showContent = true;
@@ -131,11 +133,7 @@ export class homeComponent extends NBaseComponent implements OnInit {
     }
 
     claim(){
-        this.funds.claim().then((res:any) => {
-            this.claimRes = res;
-            this.alertService.openSnackBar(res.description);
-            console.log(this.claimRes, 'Claim res');
-        });
+        this.route.navigate(['/claim']);
     }
 
 
