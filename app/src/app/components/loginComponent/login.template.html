@@ -1,3 +1,8 @@
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
+  <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" *ngIf="spinner">
+    <mat-spinner style="position: fixed;z-index: 999;   height: 2em;   width: 2em;   overflow: show;   margin: auto;   top: 0;   left: 0;   bottom: 0;   right: 0;" id="2d474ed4-5064-2e80-1146-ba27d907aef5"></mat-spinner>
+  </div>
+</div>
 <div fxLayout="row wrap" class="maxHeight" fxLayoutAlign="center center" fxShow="true" fxHide="false">
   <div fxLayout="column wrap" class="loginContainer" fxLayoutAlign="start stretch" fxShow="true" fxHide="false" fxFlex.xs="100">
     <div fxLayout="column wrap" class="loginImg" fxLayoutAlign="center center" fxShow="true" fxHide="false"><img imgSrc="Web/logo.png"></div>
@@ -36,13 +41,13 @@
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
-            <input matInput [(ngModel)]="register.password" name="password" placeholder="Password" required>
+            <input matInput [(ngModel)]="register.password" name="password" type="password" placeholder="Password" required>
 
           </mat-form-field>
           <p *ngIf="isError" class="errorMsg">Paragraph</p>
         </div>
         <div fxLayout="row wrap" class="width60" fxLayoutAlign="center center" fxShow="true" fxHide="false">
-          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg(regId.value)" [disabled]="registerForm.invalid">Register</button></div>
+          <div fxLayout="column wrap" fxFlex="60" fxLayoutAlign="center center" fxShow="true" fxHide="false"><button mat-raised-button class="loginBtn" (click)="reg(registerForm.value)" [disabled]="registerForm.invalid">Register</button></div>
         </div>
         <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <p (click)="switchForm(true)" class="switchForm">Already a user? <i class="register">Login</i></p>
@@ -63,7 +68,7 @@
         </div>
         <div fxLayout="column wrap" class="width60" fxLayoutAlign="start stretch" fxShow="true" fxHide="false">
           <mat-form-field>
-            <input matInput [(ngModel)]="login.password" name="password" placeholder="Password" required #pwd>
+            <input matInput [(ngModel)]="login.password" name="password" type="password" placeholder="Password" required #pwd>
 
           </mat-form-field>
           <p minLength="4" *ngIf="pswError" class="errorMsg">Password should be at least 4 characters long</p>

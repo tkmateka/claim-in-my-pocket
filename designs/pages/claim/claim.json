@@ -1,0 +1,13 @@
+{
+    "appPageId": "e26b4055-2ddd-7cb6-c12c-6f506d06f40e",
+    "appPageName": "claim",
+    "componentName": "claimComponent",
+    "selectorName": "bh-claim",
+    "htmlFileName": "claim.template.html",
+    "tsFileName": "claim.component.ts",
+    "bkd": {
+        "designerHtml": "",
+        "designerReference": {},
+        "ts": ""
+    }
+}

@@ -42,7 +42,11 @@ export class homeComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.idNum = this.funds.idNumber;
+        // this.idNum = this.funds.idNumber;
+
+        this.idNum = 9303030896087;
+        // this.idNum = 9101018247186;
+        // this.idNum = 5656556565656;
         
         // Get Fund Value
         this.funds.getFundValue().then((res:any) => {
@@ -53,6 +57,8 @@ export class homeComponent extends NBaseComponent implements OnInit {
                     selectedUser.push(res[i]);
                 }
             };
+
+            console.log(selectedUser)
 
             this.fundvalue.push(selectedUser[0]);
             console.log(this.fundvalue, 'Before loop');
@@ -131,11 +137,7 @@ export class homeComponent extends NBaseComponent implements OnInit {
     }
 
     claim(){
-        this.funds.claim().then((res:any) => {
-            this.claimRes = res;
-            this.alertService.openSnackBar(res.description);
-            console.log(this.claimRes, 'Claim res');
-        });
+        this.route.navigate(['/claim']);
     }
 
 

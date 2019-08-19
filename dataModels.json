@@ -49,5 +49,33 @@
                 "isArray": false
             }
         ]
+    },
+    "c06a0c07-7a8e-13c9-969e-f1b35eca9854": {
+        "dataModelId": "c06a0c07-7a8e-13c9-969e-f1b35eca9854",
+        "name": "claim",
+        "description": "Claim model",
+        "dataSource": "neutrinos-delivery-rt",
+        "fields": [
+            {
+                "name": "idNumber",
+                "fieldType": 1,
+                "isArray": false
+            },
+            {
+                "name": "referenceNumber",
+                "fieldType": 1,
+                "isArray": false
+            },
+            {
+                "name": "claimValue",
+                "fieldType": 2,
+                "isArray": false
+            },
+            {
+                "name": "claimComment",
+                "fieldType": 2,
+                "isArray": false
+            }
+        ]
     }
 }

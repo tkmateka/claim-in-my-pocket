@@ -1,6 +1,7 @@
 {
     "dataSource": {
         "register": "neutrinos-delivery-rt",
-        "login": "neutrinos-delivery-rt"
+        "login": "neutrinos-delivery-rt",
+        "claim": "neutrinos-delivery-rt"
     }
 }

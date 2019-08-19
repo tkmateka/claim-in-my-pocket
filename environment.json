@@ -4,7 +4,7 @@
         "name": "dev",
         "properties": {
             "production": false,
-            "baseUrl": "http://127.0.0.1:3000/bhive-art/",
+            "baseUrl": "http://10.200.65.39:3000/bhive-art/",
             "tenantName": "neutrinos-delivery",
             "appName": "claim-in-my-pocket",
             "namespace": "com.neutrinos-delivery.claim-in-my-pocket",

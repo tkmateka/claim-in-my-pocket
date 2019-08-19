@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ModelMethods } from '../../lib/model.methods';
 // import { BDataModelService } from '../service/bDataModel.service';
-import { NDataModelService, NSnackbarService } from 'neutrinos-seed-services';
+import { NDataModelService, NSnackbarService, NHTTPLoaderService } from 'neutrinos-seed-services';
 import { NBaseComponent } from '../../../../../app/baseClasses/nBase.component';
 
 import { register } from "../../models/register.model";
@@ -36,14 +36,19 @@ export class loginComponent extends NBaseComponent implements OnInit {
     idError: boolean = false;
     pswError: boolean = false;
     sentCode: boolean = false;
+    spinner: boolean = false;
 
-    randomKey;
+    random_Key;
+
+    users: any[] = [];
+
+    user: any[] = [];
 
     constructor(
         private bdms: NDataModelService, private auth: authService,
         private route: Router, private fundvalue: fundvalueService,
         private emailService: emailService, private _location: Location,
-        private alertService: NSnackbarService) {
+        private alertService: NSnackbarService, private nLoader: NHTTPLoaderService) {
         super();
         this.mm = new ModelMethods(bdms);
         this.register = new register();
@@ -51,7 +56,9 @@ export class loginComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.nLoader._isHTTPRequestInProgress$.subscribe(res => {
+            this.spinner = res;
+        });
     }
 
     // Go Back
@@ -60,15 +67,29 @@ export class loginComponent extends NBaseComponent implements OnInit {
     }
 
     // Register
-    reg(id) {
-        this.fundvalue.register(id).then((res:any) => {
-            console.log(res);
-            this.hasAccount = true;
-        })
+    reg(formValue) {
+        this.users.push(formValue);
+        console.log(this.users);
+
+        // Store user on local storage
+        localStorage.setItem("users", JSON.stringify(this.users));
+
+        // Activate login
+        this.hasAccount = true;
+
+        // // Send Id to backend for registrations
+        // this.fundvalue.register(formValue.idNumber).then((res:any) => {
+        //     console.log(res);
+        //     this.hasAccount = true;
+        // })
     }
 
     // Login
     log(idNum, pwd) {
+
+        this.user = JSON.parse(localStorage.getItem('users'));
+        console.log(this.user, 'user')
+
         if (idNum.length < 13) {
             this.idError = true;
             return false;
@@ -77,16 +98,27 @@ export class loginComponent extends NBaseComponent implements OnInit {
             return false;
         }
 
-        this.randomKey = Math.floor(1000 + Math.random() * 9000);
+        for (let i = 0; i < this.user.length; i++) {
 
-        let emailsString = "tukiso.mateka@neutrinos.co";
-        let emailBody = "To login please enter the following number " + this.randomKey;
+            // console.log(arrayItem, 'array item');
+            if (this.user[i]['idNumber'] == idNum) {
+                let user = this.user[i];
+                console.log(user, "NEW USER");
 
-        this.emailService.sendEmail(emailsString, emailBody);
+                let randomKey = Math.floor(1000 + Math.random() * 9000);
 
-        this.fundvalue.idNumber = idNum;
+                let emailsString = user.email;
+                let emailBody = "To login please enter the following number " + randomKey;
+                this.emailService.sendEmail(emailsString, emailBody);
 
-        this.sentCode = true;
+                this.fundvalue.idNumber = idNum;
+                this.sentCode = true;
+                this.random_Key = randomKey;
+            } else {
+                this.alertService.openSnackBar('Your ID did not match any user');
+            }
+        };
+
     }
 
     cancelOtp() {
@@ -96,9 +128,9 @@ export class loginComponent extends NBaseComponent implements OnInit {
     verifyCode(a, b, c, d, form) {
         let incomingCode = Number(`${a}${b}${c}${d}`);
 
-        console.log(this.randomKey);
+        console.log(this.random_Key);
 
-        if (incomingCode == this.randomKey) {
+        if (incomingCode == this.random_Key) {
             this.alertService.openSnackBar('Login successful');
             this.auth.logged = true;
             this.route.navigate(['/home']);
