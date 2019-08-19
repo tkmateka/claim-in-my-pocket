@@ -42,7 +42,11 @@ export class homeComponent extends NBaseComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.idNum = this.funds.idNumber;
+        // this.idNum = this.funds.idNumber;
+
+        this.idNum = 9303030896087;
+        // this.idNum = 9101018247186;
+        // this.idNum = 5656556565656;
         
         // Get Fund Value
         this.funds.getFundValue().then((res:any) => {
